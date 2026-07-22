@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <!-- ==========================================================
+           META & TITRE
+           ========================================================== -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convertify - Créez des pages de vente ultra-performantes</title>
+    <meta name="description" content="Convertify est le logiciel de création de pages de vente ultime pour les e-commerçants, infopreneurs, coachs et vendeurs de produits digitaux. Boostez vos conversions dès aujourd'hui.">
+    
+    <!-- ==========================================================
+           POLICES GOOGLE
+           ========================================================== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- ==========================================================
+           FEUILLE DE STYLE CSS
+           ========================================================== -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- ==========================================================
+           LUCIDE ICONS (bibliothèque d'icônes libres)
+           ========================================================== -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+    <!-- ==========================================================
+           HEADER / BARRE DE NAVIGATION (fixe en haut)
+           ========================================================== -->
+    <header class="navbar">
+        <div class="container navbar-container">
+            <!-- Logo -->
+            <a href="#" class="logo">
+                <span class="logo-dot"></span>
+                Convertify
+            </a>
+            
+            <!-- Menu de navigation (affiché sur desktop, caché sur mobile) -->
+            <nav class="nav-menu" id="navMenu">
+                <a href="#features" class="nav-link">Fonctionnalités</a>
+                <a href="#how-it-works" class="nav-link">Comment ça marche</a>
+                <a href="#pricing" class="nav-link">Tarifs</a>
+                <a href="#contact-section" class="nav-link">Service Client</a>
+                <a href="#testimonials" class="nav-link">Témoignages</a>
+                <!-- Ces boutons apparaissent uniquement sur mobile -->
+                <button class="btn btn-outline mobile-only trigger-signup">Se connecter</button>
+                <button class="btn btn-primary mobile-only trigger-signup">Essai Gratuit</button>
+            </nav>
+
+            <!-- Actions dans la navbar (boutons + menu mobile) -->
+            <div class="nav-actions">
+                <!-- Desktop : boutons visibles sur grand écran -->
+                <button class="btn btn-outline desktop-only trigger-signup">Se connecter</button>
+                <button class="btn btn-primary desktop-only trigger-signup">Essai Gratuit</button>
+                <!-- Mobile : bouton hamburger pour ouvrir/fermer le menu -->
+                <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu">
+                    <i data-lucide="menu" class="icon-open"></i>
+                    <i data-lucide="x" class="icon-close"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- ==========================================================
+               SECTION HÉRO (premier écran)
+               ========================================================== -->
+        <section class="hero">
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <!-- Badge d'annonce -->
+                    <div class="badge-hero">
+                        <span class="badge-dot"></span>
+                        Nouveau : Convertify 2.0 est disponible
+                    </div>
+                    <!-- Titre principal avec dégradé sur le mot clé -->
+                    <h1>
+                        Créez des pages de vente qui <span class="text-gradient">convertissent vraiment</span>
+                    </h1>
+                    <!-- Sous-titre qui détaille les cibles -->
+                    <p class="hero-subtitle">
+                        Conçu spécialement pour les e-commerçants, infopreneurs, coachs et vendeurs de produits digitaux. Transformez vos visiteurs en clients en quelques clics, sans aucune compétence technique.
+                    </p>
+                    <!-- Boutons d'action -->
+                    <div class="hero-actions">
+                        <button class="btn btn-primary btn-lg trigger-signup">
+                            Commencer l'essai gratuit
+                            <i data-lucide="arrow-right"></i>
+                        </button>
+                        <a href="#how-it-works" class="btn btn-outline btn-lg">
+                            <i data-lucide="play-circle"></i>
+                            Voir la démo
+                        </a>
+                    </div>
+                    <!-- Preuve sociale : avatars + nombre d'utilisateurs -->
+                    <div class="hero-proof">
+                        <div class="proof-avatars">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&h=100&q=80" alt="Client 1">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&h=100&q=80" alt="Client 2">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&h=100&q=80" alt="Client 3">
+                        </div>
+                        <p>Rejoint par plus de <strong>5 000+ créateurs</strong> et entrepreneurs.</p>
+                    </div>
+                </div>
+                <!-- Visuel : mockup de l'éditeur -->
+                <div class="hero-visual">
+                    <div class="mockup-container">
+                        <div class="mockup-header">
+                            <span class="mockup-dot red"></span>
+                            <span class="mockup-dot yellow"></span>
+                            <span class="mockup-dot green"></span>
+                            <div class="mockup-address">app.convertify.co/editor</div>
+                        </div>
+                        <!-- Remplacez cette image par la vôtre -->
+                        <img src="assets/hero_mockup.jpg" alt="Convertify Sales Page Editor Dashboard Mockup" class="mockup-img">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================
+               SECTION "AUDIENCES" (Fonctionnalités par persona)
+               ========================================================== -->
+        <section class="audiences" id="features">
+            <div class="container">
+                <!-- En-tête de section -->
+                <div class="section-header text-center">
+                    <h2 class="section-title">Une solution taillée pour votre activité</h2>
+                    <p class="section-subtitle">Peu importe ce que vous vendez, Convertify maximise vos taux de conversion.</p>
+                </div>
+                <!-- Grille des 4 cibles -->
+                <div class="audiences-grid">
+                    <div class="audience-card">
+                        <div class="audience-icon-wrapper">
+                            <i data-lucide="shopping-bag"></i>
+                        </div>
+                        <h3>E-commerçants</h3>
+                        <p>Créez des pages mono-produit percutantes pour vos campagnes publicitaires et multipliez vos ventes par deux.</p>
+                    </div>
+                    <div class="audience-card">
+                        <div class="audience-icon-wrapper">
+                            <i data-lucide="book-open"></i>
+                        </div>
+                        <h3>Infopreneurs</h3>
+                        <p>Présentez vos formations, ebooks et programmes en ligne de manière irrésistible avec nos structures prêtes à l'emploi.</p>
+                    </div>
+                    <div class="audience-card">
+                        <div class="audience-icon-wrapper">
+                            <i data-lucide="users"></i>
+                        </div>
+                        <h3>Coachs & Consultants</h3>
+                        <p>Simplifiez la prise de rendez-vous et vendez vos accompagnements premium avec des tunnels de vente fluides.</p>
+                    </div>
+                    <div class="audience-card">
+                        <div class="audience-icon-wrapper">
+                            <i data-lucide="sparkles"></i>
+                        </div>
+                        <h3>Produits Digitaux</h3>
+                        <p>Vendez des templates, logiciels ou abonnements avec un processus de paiement optimisé en une seule étape.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================
+               SECTION "COMMENT ÇA MARCHE" (3 étapes)
+               ========================================================== -->
+        <section class="how-it-works" id="how-it-works">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="section-title">Comment ça marche ?</h2>
+                    <p class="section-subtitle">Lancez votre première page de vente performante en moins de 15 minutes.</p>
+                </div>
+
+                <div class="steps-grid">
+                    <!-- Étape 1 -->
+                    <div class="step-card">
+                        <div class="step-number-badge">01</div>
+                        <div class="step-icon">
+                            <i data-lucide="layout-template"></i>
+                        </div>
+                        <h3>Sélectionnez un modèle</h3>
+                        <p>Choisissez parmi plus de 50 modèles conçus par des experts en copywriting et en conversion psychologique.</p>
+                    </div>
+
+                    <!-- Étape 2 -->
+                    <div class="step-card">
+                        <div class="step-number-badge">02</div>
+                        <div class="step-icon">
+                            <i data-lucide="mouse-pointer-click"></i>
+                        </div>
+                        <h3>Personnalisez le contenu</h3>
+                        <p>Modifiez le texte, changez les couleurs et intégrez vos visuels en glisser-déposer sans toucher au code.</p>
+                    </div>
+
+                    <!-- Étape 3 -->
+                    <div class="step-card">
+                        <div class="step-number-badge">03</div>
+                        <div class="step-icon">
+                            <i data-lucide="rocket"></i>
+                        </div>
+                        <h3>Publiez et encaissez</h3>
+                        <p>Connectez Stripe ou PayPal, publiez votre page en un clic et commencez à encaisser vos premiers paiements immédiatement.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================
+               SECTION TARIFS (avec toggle mensuel/annuel)
+               ========================================================== -->
+        <section class="pricing" id="pricing">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="section-title">Des tarifs clairs et adaptés</h2>
+                    <p class="section-subtitle">Commencez gratuitement et faites évoluer votre abonnement selon vos besoins.</p>
+                    
+                    <!-- Interrupteur mensuel / annuel -->
+                    <div class="pricing-toggle-container">
+                        <span class="toggle-label active" id="billing-monthly">Mensuel</span>
+                        <button class="pricing-toggle-btn" id="billingToggle" aria-label="Changer de facturation">
+                            <span class="toggle-thumb"></span>
+                        </button>
+                        <span class="toggle-label" id="billing-annually">Annuel <span class="badge-saving">-20%</span></span>
+                    </div>
+                </div>
+
+                <div class="pricing-grid">
+                    <!-- Offre 1 : Gratuit -->
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>Gratuit à vie</h3>
+                            <p>Pour lancer votre premier produit</p>
+                            <div class="price-display">
+                                <span class="price-currency">€</span>
+                                <span class="price-amount" id="price-starter">0</span>
+                                <span class="price-period">/mois</span>
+                            </div>
+                        </div>
+                        <div class="pricing-features">
+                            <ul>
+                                <li><i data-lucide="check"></i> 1 page de vente active</li>
+                                <li><i data-lucide="check"></i> Éditeur glisser-déposer de base</li>
+                                <li><i data-lucide="check"></i> Modèles standards</li>
+                                <li><i data-lucide="check"></i> Sous-domaine convertify.co</li>
+                                <li class="disabled"><i data-lucide="x"></i> A/B Testing & Stats</li>
+                                <li class="disabled"><i data-lucide="x"></i> Nom de domaine personnalisé</li>
+                            </ul>
+                        </div>
+                        <div class="pricing-footer">
+                            <button class="btn btn-outline btn-block trigger-signup">Commencer gratuitement</button>
+                        </div>
+                    </div>
+
+                    <!-- Offre 2 : Pro (mise en avant avec badge "Recommandé") -->
+                    <div class="pricing-card featured">
+                        <div class="featured-badge">Recommandé</div>
+                        <div class="pricing-header">
+                            <h3>Growth Pro</h3>
+                            <p>Idéal pour scaler votre business</p>
+                            <div class="price-display">
+                                <span class="price-currency">€</span>
+                                <span class="price-amount" id="price-pro">39</span>
+                                <span class="price-period">/mois</span>
+                            </div>
+                        </div>
+                        <div class="pricing-features">
+                            <ul>
+                                <li><i data-lucide="check"></i> Pages de vente illimitées</li>
+                                <li><i data-lucide="check"></i> Éditeur glisser-déposer Pro</li>
+                                <li><i data-lucide="check"></i> Nom de domaine personnalisé</li>
+                                <li><i data-lucide="check"></i> Intégration Stripe & PayPal</li>
+                                <li><i data-lucide="check"></i> A/B Testing & Stats détaillées</li>
+                                <li><i data-lucide="check"></i> Support prioritaire par email</li>
+                            </ul>
+                        </div>
+                        <div class="pricing-footer">
+                            <button class="btn btn-primary btn-block btn-shadow trigger-signup">Essayer gratuitement</button>
+                        </div>
+                    </div>
+
+                    <!-- Offre 3 : Enterprise -->
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>Elite Creator</h3>
+                            <p>Pour les créateurs exigeants</p>
+                            <div class="price-display">
+                                <span class="price-currency">€</span>
+                                <span class="price-amount" id="price-enterprise">89</span>
+                                <span class="price-period">/mois</span>
+                            </div>
+                        </div>
+                        <div class="pricing-features">
+                            <ul>
+                                <li><i data-lucide="check"></i> Tout ce qui est dans Pro</li>
+                                <li><i data-lucide="check"></i> 5 comptes d'équipe</li>
+                                <li><i data-lucide="check"></i> Webhooks & API de connexion</li>
+                                <li><i data-lucide="check"></i> Suppression de la marque Convertify</li>
+                                <li><i data-lucide="check"></i> Intégration CRM avancée</li>
+                                <li><i data-lucide="check"></i> Manager de compte dédié</li>
+                            </ul>
+                        </div>
+                        <div class="pricing-footer">
+                            <button class="btn btn-outline btn-block trigger-signup">Essayer gratuitement</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================
+               SECTION SUPPORT CLIENT + FORMULAIRE DE CONTACT
+               ========================================================== -->
+        <section class="support-contact" id="contact-section">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="section-title">Besoin d'aide ? Contactez notre Service Client</h2>
+                    <p class="section-subtitle">Une question sur l'outil ou un besoin d'assistance ? Notre équipe est là pour vous accompagner.</p>
+                </div>
+                <div class="support-contact-grid">
+                    <!-- Colonne gauche : engagement support -->
+                    <div class="support-info-card">
+                        <div class="support-header-badge">
+                            <i data-lucide="help-circle"></i>
+                            Support Client 7j/7
+                        </div>
+                        <h3>Notre engagement d'excellence</h3>
+                        <p>Nous savons que votre business n'attend pas. C'est pourquoi notre équipe technique est disponible pour résoudre vos blocages rapidement.</p>
+                        
+                        <div class="support-stats-list">
+                            <div class="support-stat-item">
+                                <div class="support-stat-icon"><i data-lucide="clock"></i></div>
+                                <div>
+                                    <h4>Temps de réponse moyen</h4>
+                                    <p>Moins de 2 heures pour le plan Pro et Enterprise.</p>
+                                </div>
+                            </div>
+                            <div class="support-stat-item">
+                                <div class="support-stat-icon"><i data-lucide="check-circle2"></i></div>
+                                <div>
+                                    <h4>Résolution au premier contact</h4>
+                                    <p>94% de nos demandes de support sont résolues dès le premier échange.</p>
+                                </div>
+                            </div>
+                            <div class="support-stat-item">
+                                <div class="support-stat-icon"><i data-lucide="shield-check"></i></div>
+                                <div>
+                                    <h4>Sécurité des intégrations</h4>
+                                    <p>Assistance complète sur la liaison de vos comptes Stripe, PayPal et autorépondeurs.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Colonne droite : formulaire de contact -->
+                    <div class="support-form-card">
+                        <h3>Envoyez-nous un message</h3>
+                        <p>Remplissez le formulaire ci-dessous et un conseiller vous répondra dans les plus brefs délais.</p>
+                        <!-- ==========================================================
+                             FORMULAIRE DE CONTACT (à connecter à Airtable)
+                             ========================================================== -->
+                        <form class="contact-form-el" id="contactForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="contact-name">Votre Nom</label>
+                                    <input type="text" id="contact-name" placeholder="Votre nom" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact-email">Votre Email</label>
+                                    <input type="email" id="contact-email" placeholder="Votre email" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-subject">Sujet de votre demande</label>
+                                <select id="contact-subject" required>
+                                    <option value="" disabled selected>Choisissez un sujet</option>
+                                    <option value="sales">Question commerciale / Tarifs</option>
+                                    <option value="tech">Aide technique sur l'éditeur</option>
+                                    <option value="billing">Facturation & Paiement</option>
+                                    <option value="other">Autre demande</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-message">Message</label>
+                                <textarea id="contact-message" rows="5" placeholder="Décrivez votre besoin en détail..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">
+                                Envoyer le message
+                                <i data-lucide="send"></i>
+                            </button>
+                        </form>
+                        <div class="contact-success-msg" id="contactSuccessMsg" style="display:none;">
+                            <div class="success-icon"><i data-lucide="check-circle"></i></div>
+                            <h4>Message envoyé avec succès !</h4>
+                            <p>Merci pour votre message. Notre service client reviendra vers vous sous 2 heures maximum.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================
+               SECTION TÉMOIGNAGES (3 avis clients)
+               ========================================================== -->
+        <section class="testimonials" id="testimonials">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="section-title">Ce qu'en disent nos clients</h2>
+                    <p class="section-subtitle">Découvrez comment d'autres créateurs ont transformé leur business avec Convertify.</p>
+                </div>
+
+                <div class="testimonials-grid">
+                    <!-- Avis 1 : E-commerce -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            <i data-lucide="star" class="star-fill"></i>
+                            <i data-lucide="star" class="star-fill"></i>
+                            <i data-lucide="star" class="star-fill"></i>
+                            <i data-lucide="star" class="star-fill"></i>
+                            <i data-lucide="star" class="star-fill"></i>
+                        </div>
+                        <blockquote class="testimonial-text">
+                            "En passant nos pages de vente Shopify sur Convertify, notre taux de conversion est passé de 1.8% à 3.4% en moins d'une semaine. L'éditeur est d'une rapidité incroyable et le processus d'achat en une étape fait toute la différence."
+                        </blockquote>
+                        <div class="testimonial-user">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=100&h=100&q=80" alt="Thomas" class="user-avatar">
+                            <div class="user-info">
+                                <span class="user-name">Thomas L.</span>
+                                <span class="user-role">E-commerçant (BioCosmetics)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Avis 2 : Coach -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            <i data-lucide="star" class="star-fill"></i>
+                            <i data-lucide="star" class="star-fill"></i>
+                            <i data-lucide="star" class="star-fill"></i>
+                            <i data-lucide="star" class="star-fill"></i>
+                            <i data-lucide="star" class="star-fill"></i>
+                        </div>
+                        <blockquote class="testimonial-text">
+                            "Je redoutais l'aspect technique pour vendre mon coaching premium en ligne. Avec Convertify, j'ai choisi le modèle Coach, personnalisé le texte et lié mon Stripe en 10 minutes. C'est intuitif et le rendu visuel est extrêmement professionnel."
+                        </blockquote>
+                        <div class="testimonial-user">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=100&h=100&q=80" alt="Amandine" class="user-avatar">
+                            <div class="user-info">
+                                <span class="user-name">Amandine D.</span>
+                                <span class="user-role">Coach en développement personnel</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Avis 3 : Infopreneur -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            <i data-lucide="star" class="star-fill"></i>
+                            <i data-lucide="star" class="star-fill"></i>
+                            <i data-lucide="star" class="star-fill"></i>
+                            <i data-lucide="star" class="star-fill"></i>
+                            <i data-lucide="star" class="star-fill"></i>
+                        </div>
+                        <blockquote class="testimonial-text">
+                            "J'ai testé tous les outils du marché pour vendre mes formations et mes ebooks. Convertify surpasse de loin la concurrence en termes de vitesse de chargement. Nos scores SEO et mobile sont parfaits, ce qui a réduit nos coûts publicitaires."
+                        </blockquote>
+                        <div class="testimonial-user">
+                            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=100&h=100&q=80" alt="Julien" class="user-avatar">
+                            <div class="user-info">
+                                <span class="user-name">Julien M.</span>
+                                <span class="user-role">Infopreneur & Formateur</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================
+               BANNIÈRE CTA FINALE (appel à l'action)
+               ========================================================== -->
+        <section class="cta-banner">
+            <div class="container text-center">
+                <h2>Prêt à doubler vos ventes ?</h2>
+                <p>Créez votre première page de vente Convertify aujourd'hui. Aucune carte de crédit requise.</p>
+                <button class="btn btn-white btn-lg trigger-signup">Commencer gratuitement dès maintenant</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- ==========================================================
+           FOOTER
+           ========================================================== -->
+    <footer class="footer" id="contact">
+        <div class="container footer-container">
+            <!-- Marque -->
+            <div class="footer-brand">
+                <a href="#" class="logo">
+                    <span class="logo-dot"></span>
+                    Convertify
+                </a>
+                <p class="footer-desc">
+                    L'éditeur de pages de vente n°1 pour booster les conversions des e-commerçants, coachs et créateurs.
+                </p>
+                <div class="social-links">
+                    <a href="https://twitter.com" target="_blank" aria-label="Twitter" class="social-link">
+                        <i data-lucide="twitter"></i>
+                    </a>
+                    <a href="https://facebook.com" target="_blank" aria-label="Facebook" class="social-link">
+                        <i data-lucide="facebook"></i>
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn" class="social-link">
+                        <i data-lucide="linkedin"></i>
+                    </a>
+                    <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="social-link">
+                        <i data-lucide="instagram"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Liens utiles -->
+            <div class="footer-links">
+                <h4>Liens Utiles</h4>
+                <a href="#features">Fonctionnalités</a>
+                <a href="#how-it-works">Comment ça marche</a>
+                <a href="#pricing">Tarifs</a>
+                <a href="#contact-section">Service Client</a>
+                <a href="#testimonials">Témoignages</a>
+            </div>
+
+            <!-- Coordonnées de contact -->
+            <div class="footer-contact">
+                <h4>Contactez-nous</h4>
+                <div class="contact-item">
+                    <i data-lucide="mail"></i>
+                    <span>support@convertify.co</span>
+                </div>
+                <div class="contact-item">
+                    <i data-lucide="phone"></i>
+                    <span>+33 1 23 45 67 89</span>
+                </div>
+                <div class="contact-item">
+                    <i data-lucide="map-pin"></i>
+                    <span>12 Rue de la Paix, 75002 Paris</span>
+                </div>
+            </div>
+        </div>
+        <!-- Bas de page -->
+        <div class="footer-bottom">
+            <div class="container footer-bottom-container">
+                <p>&copy; 2026 Convertify. Tous droits réservés.</p>
+                <div class="footer-legal">
+                    <a href="#">Mentions légales</a>
+                    <a href="#">Confidentialité</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==========================================================
+           MODALE D'INSCRIPTION (overlay)
+           ========================================================== -->
+    <div class="modal-overlay" id="signupModal">
+        <div class="modal-card">
+            <button class="modal-close" id="closeModal" aria-label="Fermer la modale">
+                <i data-lucide="x"></i>
+            </button>
+            <div class="modal-header">
+                <h2 id="modalTitle">Créer votre compte gratuit</h2>
+                <p id="modalSubtitle">Rejoignez plus de 5 000 entrepreneurs sur Convertify</p>
+            </div>
+            
+            <!-- ==========================================================
+                 FORMULAIRE D'INSCRIPTION (à connecter à Airtable)
+                 ========================================================== -->
+            <form class="modal-form" id="signupForm">
+                <div class="form-group" id="reg-name-group">
+                    <label for="reg-name">Nom complet</label>
+                    <input type="text" id="reg-name" placeholder="Jean Dupont" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-email">Adresse email</label>
+                    <input type="email" id="reg-email" placeholder="jean.dupont@exemple.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-password">Mot de passe</label>
+                    <input type="password" id="reg-password" placeholder="••••••••" required>
+                </div>
+                <div class="form-group" id="reg-profile-group">
+                    <label for="reg-profile">Votre activité principale</label>
+                    <select id="reg-profile" required>
+                        <option value="" disabled selected>Choisissez votre profil</option>
+                        <option value="ecom">E-commerçant</option>
+                        <option value="infopreneur">Infopreneur</option>
+                        <option value="coach">Coach / Consultant</option>
+                        <option value="digital">Vendeur de produits digitaux</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block" id="modalSubmitBtn">Créer mon compte gratuit</button>
+            </form>
+            
+            <!-- Message de confirmation après inscription -->
+            <div class="signup-success-msg" id="signupSuccessMsg" style="display:none;">
+                <div class="success-icon"><i data-lucide="shield-check"></i></div>
+                <h3 id="successTitle">Compte créé avec succès !</h3>
+                <p id="successDesc">Bienvenue chez Convertify ! Nous préparons votre espace de travail. Redirection en cours...</p>
+            </div>
+
+            <div class="modal-footer" id="modalFooter">
+                <p id="switchText">Déjà inscrit ? <a href="#" id="switchModeLink">Se connecter</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================
+           CHATBOT IA (widget flottant)
+           ========================================================== -->
+    <div class="ai-chat-widget" id="aiChatWidget">
+        <!-- Bouton d'ouverture du chat -->
+        <button class="ai-chat-toggle" id="aiChatToggle" aria-label="Ouvrir le chat assistant IA">
+            <i data-lucide="message-square" class="icon-chat-open"></i>
+            <i data-lucide="x" class="icon-chat-close"></i>
+            <span class="chat-pulse"></span>
+        </button>
+        
+        <!-- Panneau de chat -->
+        <div class="ai-chat-panel" id="aiChatPanel">
+            <div class="ai-chat-header">
+                <div class="ai-chat-avatar">
+                    <i data-lucide="sparkles"></i>
+                </div>
+                <div class="ai-chat-title-info">
+                    <h3>Assistant IA Convertify</h3>
+                    <span class="ai-chat-status"><span class="status-dot"></span> En ligne</span>
+                </div>
+            </div>
+            
+            <!-- Zone des messages -->
+            <div class="ai-chat-body" id="aiChatBody">
+                <div class="ai-message system">
+                    <p>Bonjour ! Je suis l'assistant IA de Convertify. 🤖 Comment puis-je vous aider à explorer l'outil ou concevoir votre page de vente ?</p>
+                </div>
+            </div>
+            
+            <!-- Suggestions de questions rapides -->
+            <div class="ai-chat-suggestions" id="aiChatSuggestions">
+                <button class="suggestion-btn" data-question="Qu'est-ce que Convertify ?">Qu'est-ce que Convertify ?</button>
+                <button class="suggestion-btn" data-question="Quelles sont les limites du plan gratuit ?">Limites plan gratuit</button>
+                <button class="suggestion-btn" data-question="Est-ce adapté aux débutants ?">Adapté aux débutants ?</button>
+                <button class="suggestion-btn" data-question="Comment lier Stripe ou PayPal ?">Lier Stripe / PayPal</button>
+            </div>
+            
+            <!-- Zone de saisie du message -->
+            <form class="ai-chat-input-area" id="aiChatForm">
+                <input type="text" id="aiChatInput" placeholder="Posez votre question..." autocomplete="off" required>
+                <button type="submit" class="ai-chat-send-btn" aria-label="Envoyer">
+                    <i data-lucide="send"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ==========================================================
+           SCRIPTS
+           ========================================================== -->
+    <script src="app.js"></script>
+    <script>
+        // Initialisation des icônes Lucide
+        lucide.createIcons();
+    </script>
+</body>
+</html>
