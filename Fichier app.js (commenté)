@@ -1,0 +1,293 @@
+// ============================================================
+// 1. GESTION DU MENU MOBILE
+// ============================================================
+const menuToggle = document.getElementById('menuToggle');
+const navMenu = document.getElementById('navMenu');
+
+menuToggle.addEventListener('click', () => {
+    menuToggle.classList.toggle('active');
+    navMenu.classList.toggle('open');
+});
+
+// Fermer le menu en cliquant sur un lien
+navMenu.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+        menuToggle.classList.remove('active');
+        navMenu.classList.remove('open');
+    });
+});
+
+// ============================================================
+// 2. BASCULE TARIFS (mensuel / annuel)
+// ============================================================
+const billingToggle = document.getElementById('billingToggle');
+const monthlyLabel = document.getElementById('billing-monthly');
+const annuallyLabel = document.getElementById('billing-annually');
+const pricePro = document.getElementById('price-pro');
+const priceEnterprise = document.getElementById('price-enterprise');
+
+let isAnnual = false;
+
+billingToggle.addEventListener('click', () => {
+    isAnnual = !isAnnual;
+    billingToggle.classList.toggle('annually', isAnnual);
+    monthlyLabel.classList.toggle('active', !isAnnual);
+    annuallyLabel.classList.toggle('active', isAnnual);
+
+    // Mise à jour des prix
+    if (isAnnual) {
+        // 20% de réduction sur le prix annuel (arrondi)
+        pricePro.textContent = Math.round(39 * 0.8);
+        priceEnterprise.textContent = Math.round(89 * 0.8);
+    } else {
+        pricePro.textContent = 39;
+        priceEnterprise.textContent = 89;
+    }
+});
+
+// ============================================================
+// 3. MODALE D'INSCRIPTION
+// ============================================================
+const signupModal = document.getElementById('signupModal');
+const closeModal = document.getElementById('closeModal');
+const signupForm = document.getElementById('signupForm');
+const signupSuccessMsg = document.getElementById('signupSuccessMsg');
+const modalFooter = document.getElementById('modalFooter');
+const modalSubmitBtn = document.getElementById('modalSubmitBtn');
+
+// Ouvrir la modale (via les boutons .trigger-signup)
+document.querySelectorAll('.trigger-signup').forEach(btn => {
+    btn.addEventListener('click', () => {
+        signupModal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    });
+});
+
+// Fermer la modale
+closeModal.addEventListener('click', () => {
+    signupModal.classList.remove('open');
+    document.body.style.overflow = '';
+});
+
+// Fermer en cliquant à l'extérieur
+signupModal.addEventListener('click', (e) => {
+    if (e.target === signupModal) {
+        signupModal.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+});
+
+// ============================================================
+// 4. SOUMISSION DU FORMULAIRE D'INSCRIPTION (→ Airtable)
+// ============================================================
+signupForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const name = document.getElementById('reg-name').value.trim();
+    const email = document.getElementById('reg-email').value.trim();
+    const password = document.getElementById('reg-password').value.trim();
+    const profile = document.getElementById('reg-profile').value;
+
+    // Validation simple
+    if (!name || !email || !password || !profile) {
+        alert('Merci de remplir tous les champs.');
+        return;
+    }
+
+    // Désactiver le bouton pendant l'envoi
+    modalSubmitBtn.disabled = true;
+    modalSubmitBtn.textContent = 'Envoi en cours...';
+
+    // ==========================================================
+    // ENVOI VERS AIRTABLE (remplacer par votre endpoint)
+    // ==========================================================
+    // TODO : Remplacer par l'URL de votre endpoint Netlify Function
+    const endpoint = '/api/subscribe';
+
+    try {
+        const response = await fetch(endpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, email, password, profile })
+        });
+
+        if (!response.ok) throw new Error('Erreur serveur');
+
+        // Succès : afficher le message de confirmation
+        signupForm.style.display = 'none';
+        modalFooter.style.display = 'none';
+        signupSuccessMsg.style.display = 'block';
+        
+        // Réinitialiser le formulaire (au cas où)
+        signupForm.reset();
+
+    } catch (error) {
+        console.error('Erreur inscription:', error);
+        alert('Une erreur est survenue. Veuillez réessayer.');
+        modalSubmitBtn.disabled = false;
+        modalSubmitBtn.textContent = 'Créer mon compte gratuit';
+    }
+});
+
+// ============================================================
+// 5. FORMULAIRE DE CONTACT (→ Airtable)
+// ============================================================
+const contactForm = document.getElementById('contactForm');
+const contactSuccessMsg = document.getElementById('contactSuccessMsg');
+
+contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const name = document.getElementById('contact-name').value.trim();
+    const email = document.getElementById('contact-email').value.trim();
+    const subject = document.getElementById('contact-subject').value;
+    const message = document.getElementById('contact-message').value.trim();
+
+    if (!name || !email || !subject || !message) {
+        alert('Merci de remplir tous les champs.');
+        return;
+    }
+
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Envoi en cours...';
+
+    // ==========================================================
+    // ENVOI VERS AIRTABLE (remplacer par votre endpoint)
+    // ==========================================================
+    const endpoint = '/api/contact';
+
+    try {
+        const response = await fetch(endpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, email, subject, message })
+        });
+
+        if (!response.ok) throw new Error('Erreur serveur');
+
+        contactForm.style.display = 'none';
+        contactSuccessMsg.style.display = 'block';
+        contactForm.reset();
+
+    } catch (error) {
+        console.error('Erreur contact:', error);
+        alert('Une erreur est survenue. Veuillez réessayer.');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Envoyer le message';
+    }
+});
+
+// ============================================================
+// 6. CHATBOT IA (connexion à l'API Claude)
+// ============================================================
+const chatToggle = document.getElementById('aiChatToggle');
+const chatPanel = document.getElementById('aiChatPanel');
+const chatBody = document.getElementById('aiChatBody');
+const chatInput = document.getElementById('aiChatInput');
+const chatForm = document.getElementById('aiChatForm');
+const suggestions = document.querySelectorAll('.suggestion-btn');
+
+// Ouvrir/fermer le chat
+chatToggle.addEventListener('click', () => {
+    chatToggle.classList.toggle('active');
+    chatPanel.classList.toggle('open');
+    if (chatPanel.classList.contains('open')) {
+        chatInput.focus();
+    }
+});
+
+// Ajouter un message dans le chat
+function addMessage(text, type = 'user') {
+    const div = document.createElement('div');
+    div.className = `ai-message ${type}`;
+    div.innerHTML = `<p>${text.replace(/\n/g, '<br>')}</p>`;
+    chatBody.appendChild(div);
+    chatBody.scrollTop = chatBody.scrollHeight;
+}
+
+// Afficher un "typing..." (indicateur de réponse)
+function showTyping() {
+    const div = document.createElement('div');
+    div.className = 'ai-message system typing';
+    div.id = 'typing-indicator';
+    div.innerHTML = '<p>🤔 Réflexion en cours...</p>';
+    chatBody.appendChild(div);
+    chatBody.scrollTop = chatBody.scrollHeight;
+}
+
+function hideTyping() {
+    const typing = document.getElementById('typing-indicator');
+    if (typing) typing.remove();
+}
+
+// ==========================================================
+// APPEL À L'API CLAUDE VIA NETLIFY FUNCTION
+// ==========================================================
+async function sendToClaude(question) {
+    // Ajouter le message de l'utilisateur
+    addMessage(question, 'user');
+
+    // Afficher l'indicateur de chargement
+    showTyping();
+
+    // ==========================================================
+    // REMPLACER PAR VOTRE ENDPOINT NETLIFY FUNCTION
+    // ==========================================================
+    const endpoint = '/api/chat';
+
+    try {
+        const response = await fetch(endpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ 
+                question,
+                // On peut ajouter un contexte pour personnaliser les réponses
+                context: "Tu es l'assistant IA de Convertify, un outil de création de pages de vente. Réponds de manière professionnelle, chaleureuse et concise. Si tu ne sais pas, propose de contacter le support."
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error(`Erreur API: ${response.status}`);
+        }
+
+        const data = await response.json();
+        // On suppose que la réponse est dans data.answer ou data.reply
+        const reply = data.answer || data.reply || "Je n'ai pas compris votre question. Pouvez-vous reformuler ?";
+
+        hideTyping();
+        addMessage(reply, 'system');
+
+    } catch (error) {
+        console.error('Erreur chat:', error);
+        hideTyping();
+        addMessage("❌ Désolé, je rencontre un problème technique. Pouvez-vous réessayer ou contacter notre support ?", 'system');
+    }
+}
+
+// Envoyer un message (formulaire)
+chatForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const question = chatInput.value.trim();
+    if (!question) return;
+
+    chatInput.value = '';
+    sendToClaude(question);
+});
+
+// Suggestions rapides
+suggestions.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const question = btn.dataset.question;
+        if (question) {
+            sendToClaude(question);
+        }
+    });
+});
+
+// ============================================================
+// 7. OPTION : SEND MESSAGE ON ENTER (déjà géré par le formulaire)
+// ============================================================
+// (rien à ajouter, le formulaire gère déjà la touche Entrée)
+
+console.log('🚀 Convertify — App initialisée !');
